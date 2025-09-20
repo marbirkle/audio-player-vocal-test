@@ -1,0 +1,26 @@
+<StackLayout class="p-4 bg-gray-900 rounded-lg">
+  <Button
+    [text]="isPlaying() ? '⏸ Pause' : '▶️ Play'"
+    class="p-2 text-lg font-bold text-yellow-400"
+    (tap)="togglePlay()"
+  ></Button>
+
+  <Progress
+    [value]="currentTime()"
+    [maxValue]="duration()"
+    class="my-2 h-2 bg-yellow-400"
+  ></Progress>
+
+  <GridLayout columns="*, auto">
+    <Label
+      [text]="formatTime(currentTime())"
+      class="text-white text-sm"
+      col="0"
+    ></Label>
+    <Label
+      [text]="formatTime(duration())"
+      class="text-white text-sm"
+      col="1"
+    ></Label>
+  </GridLayout>
+</StackLayout>

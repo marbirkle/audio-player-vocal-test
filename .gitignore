@@ -26,3 +26,21 @@ typings/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# NativeScript platforms
+/platforms
+/hooks
+/tmp
+/dist
+/.angular
+/.vscode
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+*.xcarchive
+
+# IDE
+.idea/
+.DS_Store
