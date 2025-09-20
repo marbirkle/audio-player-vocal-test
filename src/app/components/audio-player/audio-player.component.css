@@ -1,29 +1,23 @@
-Button {
+.play-btn {
+  width: 60;
+  height: 60;
+  border-radius: 8;
   background-color: #facc15;
   color: #000;
-  border-radius: 12;
+  font-size: 28;
+  font-weight: bold;
 }
 
-Slider {
-  min-width: 200;
-  background-color: #3b3b3b;
-  color: #facc15;
-}
-
-GridLayout {
-  margin-top: 8;
-  margin-bottom: 8;
-}
-
-Label {
-  vertical-align: middle;
+.audio-progress {
+  height: 6;
+  min-height: 6;
+  background-color: #3b3b3b; /* track */
+  color: #facc15; /* relleno */
+  border-radius: 3;
 }
 
 .text-white {
   color: white;
-}
-.text-yellow-400 {
-  color: #facc15;
 }
 .bg-gray-900 {
   background-color: #1a1a1a;

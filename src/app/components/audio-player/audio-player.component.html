@@ -1,37 +1,41 @@
 <StackLayout class="p-4 bg-gray-900 rounded-lg">
-  <GridLayout columns="*, auto" class="mb-4">
-    <Label
-      [text]="audioFileName()"
-      class="text-white text-base font-bold"
+  <!-- Col 0 = botón, Col 1 = separación, Col 2 = contenido -->
+  <GridLayout columns="60, 12, *" rows="auto, auto" verticalAlignment="center">
+    <!-- Botón play/stop -->
+    <Button
+      #playBtn
+      [text]="isPlaying() ? '⏹' : '▶️'"
+      [isEnabled]="isAudioReady()"
+      class="play-btn"
+      (tap)="onPlayTap(playBtn)"
       col="0"
-    ></Label>
-    <Label
-      [text]="formatTime(currentTime())"
-      class="text-white text-base text-right"
-      col="1"
-    ></Label>
+      rowSpan="2"
+    ></Button>
+
+    <!-- Fila superior: nombre + contador -->
+    <GridLayout col="2" row="0" columns="*, auto" verticalAlignment="center">
+      <Label
+        [text]="fileDate()"
+        class="text-white text-base font-bold"
+        col="0"
+        verticalAlignment="center"
+      ></Label>
+
+      <Label
+        [text]="displayedTime()"
+        class="text-white text-base text-right"
+        col="1"
+        verticalAlignment="center"
+      ></Label>
+    </GridLayout>
+
+    <!-- Fila inferior: barra de progreso -->
+    <Progress
+      [value]="progressValue()"
+      [maxValue]="duration()"
+      class="audio-progress"
+      col="2"
+      row="1"
+    ></Progress>
   </GridLayout>
-
-  <Slider
-    [value]="currentTime()"
-    [maxValue]="duration()"
-    (valueChange)="seekToTime($event.value)"
-    class="my-2"
-  ></Slider>
-
-  <GridLayout columns="*, auto">
-    <Label [text]="formatTime(0)" class="text-white text-sm" col="0"></Label>
-    <Label
-      [text]="formatTime(duration())"
-      class="text-white text-sm text-right"
-      col="1"
-    ></Label>
-  </GridLayout>
-
-  <Button
-    [text]="isPlaying() ? '⏸ Pause' : '▶️ Play'"
-    [isEnabled]="isAudioReady()"
-    class="mt-4 p-2 text-lg font-bold text-yellow-400"
-    (tap)="togglePlay()"
-  ></Button>
 </StackLayout>
