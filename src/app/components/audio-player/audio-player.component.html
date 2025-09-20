@@ -1,26 +1,37 @@
 <StackLayout class="p-4 bg-gray-900 rounded-lg">
-  <Button
-    [text]="isPlaying() ? '⏸ Pause' : '▶️ Play'"
-    class="p-2 text-lg font-bold text-yellow-400"
-    (tap)="togglePlay()"
-  ></Button>
-
-  <Progress
-    [value]="currentTime()"
-    [maxValue]="duration()"
-    class="my-2 h-2 bg-yellow-400"
-  ></Progress>
-
-  <GridLayout columns="*, auto">
+  <GridLayout columns="*, auto" class="mb-4">
     <Label
-      [text]="formatTime(currentTime())"
-      class="text-white text-sm"
+      [text]="audioFileName()"
+      class="text-white text-base font-bold"
       col="0"
     ></Label>
     <Label
-      [text]="formatTime(duration())"
-      class="text-white text-sm"
+      [text]="formatTime(currentTime())"
+      class="text-white text-base text-right"
       col="1"
     ></Label>
   </GridLayout>
+
+  <Slider
+    [value]="currentTime()"
+    [maxValue]="duration()"
+    (valueChange)="seekToTime($event.value)"
+    class="my-2"
+  ></Slider>
+
+  <GridLayout columns="*, auto">
+    <Label [text]="formatTime(0)" class="text-white text-sm" col="0"></Label>
+    <Label
+      [text]="formatTime(duration())"
+      class="text-white text-sm text-right"
+      col="1"
+    ></Label>
+  </GridLayout>
+
+  <Button
+    [text]="isPlaying() ? '⏸ Pause' : '▶️ Play'"
+    [isEnabled]="isAudioReady()"
+    class="mt-4 p-2 text-lg font-bold text-yellow-400"
+    (tap)="togglePlay()"
+  ></Button>
 </StackLayout>

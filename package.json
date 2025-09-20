@@ -12,9 +12,10 @@
     "@angular/platform-browser": "~20.0.0",
     "@angular/platform-browser-dynamic": "~20.0.0",
     "@angular/router": "~20.0.0",
+    "@nativescript-community/audio": "^6.4.13",
     "@nativescript/angular": "^20.0.0",
     "@nativescript/core": "~8.9.0",
-    "nativescript-audio": "^6.2.6",
+    "ns-permissions": "^2.0.1",
     "rxjs": "~7.8.0",
     "zone.js": "~0.15.0"
   },

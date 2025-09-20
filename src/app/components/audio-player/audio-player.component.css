@@ -4,7 +4,30 @@ Button {
   border-radius: 12;
 }
 
-Progress {
-  margin-top: 12;
-  margin-bottom: 12;
+Slider {
+  min-width: 200;
+  background-color: #3b3b3b;
+  color: #facc15;
+}
+
+GridLayout {
+  margin-top: 8;
+  margin-bottom: 8;
+}
+
+Label {
+  vertical-align: middle;
+}
+
+.text-white {
+  color: white;
+}
+.text-yellow-400 {
+  color: #facc15;
+}
+.bg-gray-900 {
+  background-color: #1a1a1a;
+}
+.rounded-lg {
+  border-radius: 8;
 }
