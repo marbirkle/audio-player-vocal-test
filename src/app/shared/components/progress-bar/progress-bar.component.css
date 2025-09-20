@@ -1,0 +1,7 @@
+.audio-progress {
+  height: 6;
+  min-height: 6;
+  background-color: #3b3b3b;
+  color: #facc15;
+  border-radius: 3;
+}

@@ -1,0 +1,20 @@
+<!-- Loader (spinner) -->
+
+<ActivityIndicator
+  [busy]="isLoading!"
+  [visibility]="isLoading ? 'visible' : 'collapse'"
+  class="loading-spinner"
+>
+</ActivityIndicator>
+
+<!-- Botón play/stop -->
+
+<Button
+  #playBtn
+  [text]="isPlaying ? '⏹' : '▶️'"
+  [isEnabled]="isAudioReady!"
+  [visibility]="isLoading ? 'collapse' : 'visible'"
+  class="play-btn"
+  (tap)="onPlayTap(playBtn)"
+>
+</Button>

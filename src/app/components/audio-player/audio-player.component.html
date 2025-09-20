@@ -2,54 +2,39 @@
   class="audio-player-container p-4 bg-gray-900 rounded-lg"
   [opacity]="isAudioReady() ? 1 : 0.5"
 >
-  <!-- Col 0 = botón, Col 1 = separación, Col 2 = contenido -->
-
+  <!--
+  Col
+  0="controls,"
+  Col
+  1="divider,"
+  Col
+  2="content"
+  -->
   <GridLayout columns="60, 12, *" rows="auto, auto" verticalAlignment="center">
-    <!-- Indicador de carga (spinner) -->
-    <ActivityIndicator
-      [busy]="isLoading()"
-      [visibility]="isLoading() ? 'visible' : 'collapse'"
+    <!-- Player controllers (Button and Spinner) -->
+    <app-playback-controls
+      [isLoading]="isLoading()"
+      [isPlaying]="isPlaying()"
+      [isAudioReady]="isAudioReady()"
+      (playTap)="onPlayTap()"
       col="0"
       rowSpan="2"
-      class="loading-spinner"
-    ></ActivityIndicator>
+    ></app-playback-controls>
 
-    <!-- Botón play/stop -->
-    <Button
-      #playBtn
-      [text]="isPlaying() ? '⏹' : '▶️'"
-      [isEnabled]="isAudioReady()"
-      [visibility]="isLoading() ? 'collapse' : 'visible'"
-      class="play-btn"
-      (tap)="onPlayTap(playBtn)"
-      col="0"
-      rowSpan="2"
-    ></Button>
+    <!-- top row : file date and seconds counter -->
+    <app-progress-display
+      [fileDate]="fileDate()"
+      [displayedTime]="displayedTime()"
+      col="2"
+      row="0"
+    ></app-progress-display>
 
-    <!-- Fila superior: nombre + contador -->
-    <GridLayout col="2" row="0" columns="*, auto" verticalAlignment="center">
-      <Label
-        [text]="fileDate()"
-        class="text-white text-base font-bold"
-        col="0"
-        verticalAlignment="center"
-      ></Label>
-
-      <Label
-        [text]="displayedTime()"
-        class="text-white text-base text-right"
-        col="1"
-        verticalAlignment="center"
-      ></Label>
-    </GridLayout>
-
-    <!-- Fila inferior: barra de progreso -->
-    <Progress
+    <!-- bottom row : progress bar -->
+    <app-progress-bar
       [value]="progressValue()"
       [maxValue]="duration()"
-      class="audio-progress"
       col="2"
       row="1"
-    ></Progress>
+    ></app-progress-bar>
   </GridLayout>
 </StackLayout>

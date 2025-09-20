@@ -8,16 +8,27 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NativeScriptCommonModule } from "@nativescript/angular";
-import { Button } from "@nativescript/core";
 import { AudioPlayerService } from "./audio-player.service";
 import { getDateFormatted } from "../../core/utils/date.utils";
 import { formatTime } from "../../core/utils/audio.utils";
-import { ActivityIndicator } from "@nativescript/core";
+
+// ahred components
+import { PlaybackControlsComponent } from "../../shared/components/playback-controls/playback-controls.component";
+import { ProgressDisplayComponent } from "../../shared/components/progress-display/progress-display.component";
+import { ProgressBarComponent } from "../../shared/components/progress-bar/progress-bar.component";
+import { Button } from "@nativescript/core";
 
 @Component({
   selector: "app-audio-player",
   standalone: true,
-  imports: [NativeScriptCommonModule, CommonModule],
+  imports: [
+    NativeScriptCommonModule,
+    CommonModule,
+    // Agrega los nuevos componentes compartidos a los imports
+    PlaybackControlsComponent,
+    ProgressDisplayComponent,
+    ProgressBarComponent,
+  ],
   templateUrl: "./audio-player.component.html",
   styleUrls: ["./audio-player.component.css"],
   schemas: [NO_ERRORS_SCHEMA],
@@ -60,30 +71,12 @@ export class AudioPlayerComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.audioUrl) {
       this.audioService.loadAudio(this.audioUrl);
-    } else {
     }
   }
 
-  onPlayTap(button: Button) {
-    this.animateButtonPress(button);
+  // on play button tap event
+  onPlayTap(): void {
     this.audioService.togglePlay();
-  }
-
-  animateButtonPress(button: Button) {
-    if (!button) return;
-
-    // Animación: se mueve hacia abajo 4px y vuelve
-    button
-      .animate({
-        translate: { x: 0, y: 4 },
-        duration: 50,
-      })
-      .then(() => {
-        return button.animate({
-          translate: { x: 0, y: 0 },
-          duration: 50,
-        });
-      });
   }
 
   ngOnDestroy() {
