@@ -1,11 +1,25 @@
-<StackLayout class="p-4 bg-gray-900 rounded-lg">
+<StackLayout
+  class="audio-player-container p-4 bg-gray-900 rounded-lg"
+  [opacity]="isAudioReady() ? 1 : 0.5"
+>
   <!-- Col 0 = botón, Col 1 = separación, Col 2 = contenido -->
+
   <GridLayout columns="60, 12, *" rows="auto, auto" verticalAlignment="center">
+    <!-- Indicador de carga (spinner) -->
+    <ActivityIndicator
+      [busy]="isLoading()"
+      [visibility]="isLoading() ? 'visible' : 'collapse'"
+      col="0"
+      rowSpan="2"
+      class="loading-spinner"
+    ></ActivityIndicator>
+
     <!-- Botón play/stop -->
     <Button
       #playBtn
       [text]="isPlaying() ? '⏹' : '▶️'"
       [isEnabled]="isAudioReady()"
+      [visibility]="isLoading() ? 'collapse' : 'visible'"
       class="play-btn"
       (tap)="onPlayTap(playBtn)"
       col="0"
