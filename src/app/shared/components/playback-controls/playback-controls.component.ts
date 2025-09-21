@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NativeScriptCommonModule } from "@nativescript/angular";
-import { ActivityIndicator, Button } from "@nativescript/core";
+import { Button } from "@nativescript/core";
 
 @Component({
   selector: "app-playback-controls",

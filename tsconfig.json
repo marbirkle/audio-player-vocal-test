@@ -9,13 +9,18 @@
     "noEmitOnError": true,
     "skipLibCheck": true,
     "lib": ["ESNext", "dom"],
+    "types": ["jasmine", "node"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@services/*": ["src/app/services/*"],
+      "@components/*": ["src/app/components/*"],
+      "@shared-components/*": ["src/app/shared/components/*"],
+      "@constants/*": ["src/app/core/constants/*"],
+      "@utils/*": ["src/app/core/utils/*"]
     }
   },
-  "include": ["src/tests/**/*.ts", "src/**/*.ios.ts", "src/**/*.android.ts"],
-  "files": ["./src/main.ts", "./references.d.ts", "./src/polyfills.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "platforms", "e2e"]
 }

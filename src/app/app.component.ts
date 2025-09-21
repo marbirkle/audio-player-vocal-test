@@ -1,8 +1,8 @@
 import { Component, NO_ERRORS_SCHEMA } from "@angular/core";
 
-import { AudioPlayerComponent } from "./components/audio-player/audio-player.component";
+import { AudioPlayerComponent } from "@components/audio-player/audio-player.component";
 import { NativeScriptCommonModule } from "@nativescript/angular";
-import { AUDIO_URL } from "./core/constants/app.constants";
+import { AUDIO_URL } from "@constants/app.constants";
 @Component({
   selector: "ns-app",
   templateUrl: "./app.component.html",
